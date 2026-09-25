@@ -1,20 +1,6 @@
 """Variance Gamma Markov Chain option pricing implementation."""
 
 from .calibration import calibrate_markov_vg, calibrate_single_vg
-from .char_function import (
-    CFBand,
-    cf_band_loss,
-    cf_from_otm,
-    cf_operator,
-    cf_zonotope,
-    model_cf,
-    nyquist_vmax,
-    otm_from_surface,
-    share_measure_bounds,
-    zonotope_excess,
-    zonotope_radius,
-    zonotope_support,
-)
 from .markov_chain import markov_vg_cf
 from .option_chain import (
     build_call_surface,
@@ -78,17 +64,4 @@ __all__ = [
     "risk_neutral_density",
     "market_density_bl",
     "prepare_snapshot",
-    # market-implied characteristic function
-    "otm_from_surface",
-    "cf_from_otm",
-    "model_cf",
-    "cf_operator",
-    "nyquist_vmax",
-    "cf_zonotope",
-    "zonotope_support",
-    "zonotope_radius",
-    "zonotope_excess",
-    "cf_band_loss",
-    "CFBand",
-    "share_measure_bounds",
 ]
