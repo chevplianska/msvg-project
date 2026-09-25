@@ -2,13 +2,14 @@
 name = "msvg"
 version = "0.1.0"
 dependencies = [
-    "numpy",
+    "numpy>=1.24,<3",
     "numba",
     "scipy",
     "matplotlib",
-    "py-vollib-vectorized @ git+https://github.com/ortap/py_vollib_vectorized.git",
+    "py_lets_be_rational",
     "seaborn",
     "pandas",
+    "jupytext>=1.19.5",
 ]
 
 [build-system]
@@ -18,4 +19,3 @@ build-backend = "setuptools.build_meta"
 [tool.setuptools.packages.find]
 where = ["."]
 include = ["msvg*"]
-
