@@ -8,8 +8,6 @@ Robert H. Smith School of Business, University of Maryland, College Park, MD 207
 
 Received December 27, 2000; revised October 3, 2001.
 
-> **Editorial note:** This edition cleans the supplied Markdown transcription. Obvious typographical and mathematical transcription errors are corrected and documented in the editorial notes at the end. Empirical values and substantive claims are retained; unresolved inconsistencies are flagged rather than silently reconciled. Figures remain linked to the supplied external image URLs.
-
 ## Abstract
 
 This paper proposes a Markov chain between homogeneous Lévy processes as a candidate class of processes for the statistical and risk neutral dynamics of financial asset prices. The method is illustrated using the variance gamma process. Closed forms for the characteristic function are developed and this renders feasible maximum likelihood estimation and option pricing. The statistical and risk neutral process is fit to data on time series and option prices respectively. It is observed in the statistical estimation that single names have an average period of 4 to 6 months in a state while this reduces to one month for indices. Risk neutrally there is generally a low probability of a move to a state with higher moments. In some cases this is reversed.
@@ -560,7 +558,7 @@ $$
 
 The integrations in equations (15) and (16) may be performed using the fast Fourier transform incorporating Simpson's rule.
 
-Specifically, let $v_j=-a+(j-1)\eta$, for $j=1,\ldots,N$, where $N$ is a power of 2 and $\eta=2a/N$. Further, let $k_u=-b+(u-1)\lambda$ for $u=1,\ldots,N$, where $\lambda=2b/N$. For the use of the fast Fourier transform we require $\lambda\eta=2\pi/N$. Incorporating Simpson's rule we may write the integration in (15) and (16) as
+Specifically, let $v_j=-a+(j-1)\eta$, for $j=1,\ldots,N$, where $N$ is a power of 2 and $\eta=2a/N$. Further, let $k_u=-b+(u-1)\lambda$ for $u=1,\ldots,N$, where $\lambda=2b/N$. For the use of the Fast Fourier transform we require that $\lambda\eta=2/N$. Incorporating Simpson's rule we may write the integration in (15) and (16) as
 
 $$
 \begin{aligned}
@@ -576,13 +574,13 @@ $$
 &=\frac{e^{iak_u}}{2\pi}\sum_{j=1}^N
  e^{-i(2\pi/N)(j-1)(u-1)}\zeta_T(v_j)e^{ib\eta(j-1)}
 \frac{\eta}{3}\bigl(3+(-1)^j-\delta_{j-1}\bigr)\\
-&=\frac{e^{iak_u}}{2\pi}\operatorname{FFT}
+&=\frac{e^{iak_u}}{2\pi}\mathrm{fft}
 \left\{\zeta_T(v_j)e^{ib\eta(j-1)}
-\frac{\eta}{3}\bigl(3+(-1)^j-\delta_{j-1}\bigr)\right\}_u.
+\frac{\eta}{3}\bigl(3+(-1)^j-\delta_{j-1}\bigr)\right\}.
 \end{aligned}
 $$
 
-Here $\operatorname{FFT}$ denotes the fast Fourier transform operator and $\delta_{j-1}$ is 1 for $j=1$ and 0 otherwise.
+where $\mathrm{fft}$ denotes the application of the Fast Fourier transform operator.
 
 These operations make it possible to obtain two-state VG Markov option prices at a sufficiently high speed to make calibration of parameters to the options surface a feasible exercise. In our applications we calibrated by minimizing the sum of squared relative errors and report the average percentage error as the statistic of best fit.
 
@@ -916,14 +914,14 @@ $$
 It follows that
 
 $$
-\operatorname{Var}[X(t)]=(\mu_2^2-\mu_1^2)t,
+\mathrm{variance}_{X(t)}=(\mu_2^2-\mu_1^2)t,
 $$
 
 $$
 \begin{aligned}
-\operatorname{Skew}[X(t)]
+\mathrm{skewness}_{X(t)}
 &=\frac{\mu_3^3+2\mu_1^3-3\mu_1\mu_2^2}{(\mu_2^2-\mu_1^2)^{3/2}}\frac{1}{\sqrt{t}},\\
-\operatorname{Kurt}[X(t)]-3
+\mathrm{kurtosis}_{X(t)}-3
 &=\frac{12\mu_1^2\mu_2^2-3\mu_2^4-4\mu_1\mu_3^3+\mu_4^4-6\mu_1^4}{(\mu_2^2-\mu_1^2)^2}\frac{1}{t}.
 \end{aligned}
 $$
@@ -998,48 +996,3 @@ The authors are indebted to Peter Carr and Ajay Khanna for innumerable discussio
 - Merton, R. C. (1973). “Theory of Rational Option Pricing.” *Bell Journal of Economics and Management*, **4**, 141–183.
 - Merton, R. C. (1976). “Option Pricing when Underlying Stock Returns are Discontinuous.” *Journal of Financial Economics*, **3**, 125–144.
 - Nelson, D. (1991). “Conditional Heteroskedasticity in Asset Returns: A New Approach.” *Econometrica*, **59**, 347–370.
-
-## Editorial Notes on This Transcription
-
-These notes are additions to the supplied text, not part of the authors’ paper. This is a cleaned transcription, not a verified reproduction of the published edition.
-
-### Formatting and Transcription Repairs
-
-- Standardized heading levels, paragraph breaks, author affiliations, table headers, decimal spacing, scientific notation, captions, references, and footnotes.
-- Removed page-layout interruptions. Tables and figures now appear with their relevant results sections; appendix proofs run without intervening tables or figures.
-- Preserved all 11 supplied figure links and all supplied empirical table entries. Split the multi-panel parameter tables into valid rectangular Markdown tables.
-- Corrected obvious wording and OCR errors, including “out-ofsample,” “stockprice,” “Ricatti,” “Simpson's s rule,” “Altrernative,” and “NewApproach.”
-- Normalized the anomalous ticker “DGR” in Table 4 to “DRG,” consistent with Tables 2(b) and 3(b).
-- Interpreted the malformed UAL entry “.0979 .1509” as estimate 0.0979 with standard error 0.1509; BIX “..027” as 0.027; and XOI “1.6le-6” as 1.61e-6. These three OCR interpretations should be checked against the original if exact numerical fidelity is required.
-
-### Mathematical Repairs and Clarifications
-
-- Changed the integral of the nonnegative infinite-activity Lévy density from $-\infty$ to $+\infty$.
-- Repaired Proposition 1's “$1=\sqrt t$” to $1/\sqrt t$, stated the finite-fourth-moment and positive-variance conditions, and changed “volatility” to “variance” where the displayed quantity is $m_0^{(2)}/2$.
-- Replaced the malformed Dirac-delta notation preceding equation (3) with a reference to the jump measure. Equation (2) is retained as the paper's informal motivation.
-- Restored the drift term in the $\nu\to0$ limit of equation (5). The limit is Brownian motion with drift $\theta$, not necessarily standard Brownian motion.
-- Specified unit time for the symmetric kurtosis formula $3(1+\nu)$; at horizon $t$ it is $3(1+\nu/t)$.
-- Enclosed both stochastic-integral terms within equation (10).
-- In equations (12)–(13), used the occupation-time distribution $dF_t(s)$ instead of an ordinary density alone. The distribution includes atoms at 0 and $t$ from paths with no state transition.
-- Made the Laplace-transform specialization $a=0$, $b=-\lambda$ explicit, and wrote $\beta(s)=-\lambda$ throughout the interval.
-- Repaired the malformed $g_1$ numerator in Proposition 2 using the intact formula immediately before it. The repeated functions are now referenced rather than printed twice. Assigned the minus root to $\eta_1$ and the plus root to $\eta_2$ explicitly.
-- Put the entire deterministic log-price term inside the factor $iu$ in Proposition 2: $\exp(iu[\ln S(0)+rt+\omega(t)])$.
-- Corrected the FFT grid condition to $\lambda\eta=2\pi/N$, consistent with the Fourier kernel in the next lines.
-- Corrected the integration order $dk\,ds$ after exchanging the integrals in the proof of Proposition 3.
-- Replaced “transition probabilities” with “transition rates” where the text means $\lambda_{01}$ and $\lambda_{10}$. Corrected the IBM table note's volatility parameter from $\theta_i$ to $\sigma_i$.
-
-### Unresolved Source Issues and Scope Limits
-
-- Section 5 ends the return sample on December 28, 1998; the table notes end it on December 9, 1998. Both statements are retained.
-- The text describes six option underliers, but the supplied Tables 5(a)–5(e) cover only five. The YHOO table supplies four dates although its original note says five. No missing results have been invented.
-- The introduction's section outline does not fully match the later section numbering. It is retained apart from minor formatting.
-- The paper's claims concerning martingales, calendar-spread arbitrage, significance, and regime durations are retained as author claims. They have not been independently established by this transcription cleanup. In particular, constant unconditional discounted expectation alone does not establish the conditional martingale property or an ordering of option prices across maturities.
-- Table 4's reported probability levels and the text's blanket rejection language are retained. The applicability of the stated chi-squared reference distribution is not validated here.
-- The uncompensated pure-jump representation in Section 1 requires suitable integrability; it is not a general representation of every Lévy process. Likewise, the moment-generating-function proof presumes that the required generating function exists; finite-moment versions can instead use characteristic-function derivatives.
-- The claim that increasing $\nu$ raises jump arrival rates at every size is retained from the supplied prose; the prefactor $1/\nu$ in equation (6) also changes, so that claim is not implied solely by slower exponential decay.
-- Implementing the formulas requires attention to exponential-moment existence, consistent complex logarithms, limiting cases in the closed forms, and the removable singularity at $v=0$ in Proposition 3. These are outside a Markdown cleanup.
-- Bibliographic volume and page data are retained as supplied and have not been verified against publisher records. External figure availability has not been checked.
-
-### Display Compatibility Update
-
-Equation numbers are placed in ordinary Markdown labels above the display equations instead of LaTeX `\tag{...}` commands. This avoids dependence on the renderer’s equation-number layout. The mathematical expressions are unchanged by this update.
