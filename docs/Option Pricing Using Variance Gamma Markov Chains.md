@@ -575,8 +575,8 @@ $$
  e^{-i(2\pi/N)(j-1)(u-1)}\zeta_T(v_j)e^{ib\eta(j-1)}
 \frac{\eta}{3}\bigl(3+(-1)^j-\delta_{j-1}\bigr)\\
 &=\frac{e^{iak_u}}{2\pi}\mathrm{fft}
-\left\{\zeta_T(v_j)e^{ib\eta(j-1)}
-\frac{\eta}{3}\bigl(3+(-1)^j-\delta_{j-1}\bigr)\right\}.
+\left(\zeta_T(v_j)e^{ib\eta(j-1)}
+\frac{\eta}{3}\bigl(3+(-1)^j-\delta_{j-1}\bigr)\right).
 \end{aligned}
 $$
 
