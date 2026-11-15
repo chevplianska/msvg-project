@@ -48,7 +48,3 @@ pip install -e .
 - `calibrate_single_vg`: Calibrate single VG model to market prices
 - `calibrate_markov_vg`: Calibrate Markov VG model to market prices
 
-## TODO
-- [ ] Add documentation of the source code to the `docs/` folder.
-- [ ] Validate against published parameter/price tables from papers to make sure we are implementing the models correctly.
-- [ ] Fit to real option prices to evaluate whether the Markov VG model is truly better than the single VG model in capturing the market.
