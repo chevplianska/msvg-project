@@ -14,7 +14,7 @@ msvg-project/
 │   └── calibration.py     # Model calibration
 ├── notebooks/
 │   └── paper_replication.ipynb    # Main notebook: complete replication
-└── docs/   # No docs yet, but I put a Markdown version of the Markov VG paper Konikov-Madan (2002) for easy reference.
+└── docs/   # I put a Markdown version of the Markov VG paper Konikov-Madan (2002) for easy reference.
 ```
 
 ## Installation
