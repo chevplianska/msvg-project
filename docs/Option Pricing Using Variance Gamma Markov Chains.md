@@ -56,9 +56,10 @@ The outline of the paper is as follows. Section 1 briefly describes the structur
 
 From a financial perspective the Lévy processes of interest to us are best introduced by contrast with the Merton (1976) jump diffusion model familiar in the finance literature. Such a jump diffusion model for the risk neutral stock price $S(t)$ is typically described by the stochastic differential equation
 
+**Equation (1).**
+
 $$
 dS(t)=(r-\mu_J)S(t)\,dt+\sigma S(t)\,dW(t)+S(t_-)(J-1)\,dq.
-\tag{1}
 $$
 
 Here $r$ is the continuously compounded interest rate, $\sigma$ is the volatility from the diffusion component, $W(t)$ is a standard Brownian motion, $\mu_J$ is the mean jump contribution per unit time, $q(t)$ is a Poisson jump or counting process that counts all the jumps and $J$ is the jump multiplier in the stock price: after the jump the stock price is $S(t_-)J$. Typically one models $J=e^x$ and $p(x)$ is the supposed probability density for the jump in the logarithm of the stock price. With this specification with a Poisson arrival rate of $\lambda$ jumps per unit time we have
@@ -69,20 +70,22 @@ $$
 
 We see in equation (1) that the small price movements are being accounted for by the diffusion term while the jump terms model the few large and rare moves. One may now rewrite equation (1) by introducing separate Poisson processes $q^x(t)$ that count jumps of size $x$ that occur at rate $\lambda p(x)$ by the following expression
 
+**Equation (2).**
+
 $$
 dS(t)=rS(t)\,dt+\sigma S(t)\,dW(t)
 +S(t_-)\int_{-\infty}^{\infty}(e^x-1)\bigl(dq^x(t)-\lambda p(x)\,dt\bigr)\,dx.
-\tag{2}
 $$
 
 Here we integrate over all jump sizes the jump less its arrival rate to get a martingale difference or a zero expectation impact just like the diffusion martingale difference.
 
 From equation (2) to a general Lévy representation is a small step. Introduce the jump measure $m(dx,dt)$ and rewrite (2) as
 
+**Equation (3).**
+
 $$
 dS(t)=rS(t)\,dt+\sigma S(t)\,dW(t)
 +S(t_-)\int_{-\infty}^{\infty}(e^x-1)\bigl(m(dx,dt)-\lambda p(x)\,dx\,dt\bigr).
-\tag{3}
 $$
 
 The measure $\lambda p(x)\,dx\,dt$ is then called the compensator of the jump measure $m(dx,dt)$.
@@ -129,13 +132,14 @@ The linearity in $t$ of the log characteristic function is a consequence of homo
 
 By way of an example of a pure jump Lévy process we mention the gamma process $\gamma(t;\nu)$ with mean $t$ and variance $\nu t$. The process is an increasing process with increments over nonoverlapping intervals of length $h$ that have the gamma density with mean $h$ and variance $\nu h$. As a Lévy process its jump compensator is defined by
 
+**Equation (4).**
+
 $$
 k(x)=
 \begin{cases}
 \dfrac{\exp(-x/\nu)}{\nu x},&x>0,\\
 0,&x<0.
 \end{cases}
-\tag{4}
 $$
 
 The integral of the jump compensator is infinite. We may easily evaluate its characteristic function and this is given by
@@ -279,15 +283,18 @@ The VG process is a three parameter process $X(t;\sigma,\nu,\theta)$ obtained on
 
 The characteristic function of the VG process has a particularly simple expression and is given by
 
+**Equation (5).**
+
 $$
 \Phi_{X(t)}(u)=E[e^{iuX(t)}]
 =\left(1-i\theta\nu u+\frac{\sigma^2\nu}{2}u^2\right)^{-t/\nu}.
-\tag{5}
 $$
 
 We may observe on taking the limit as $\nu$ tends to zero that the characteristic function tends to $\exp(i\theta ut-\sigma^2u^2t/2)$, the characteristic function of Brownian motion with drift $\theta$ and volatility $\sigma$. Hence Brownian motion is a parametric limiting case. Processes obtained by subordinating Brownian motion to a time change have Brownian motion as the special case arising when the volatility of the time change approaches zero.
 
 Unlike Brownian motion, however, the process is a pure jump process that is infinitely divisible with independent increments and has a Lévy density that may be recovered from the Lévy–Khintchine characterization of the characteristic function for such processes. This Lévy density is given by
+
+**Equation (6).**
 
 $$
 \begin{aligned}
@@ -295,31 +302,33 @@ k(x)&=\frac{1}{\nu|x|}\exp\left[-\left(\zeta x+\frac{\sqrt{2}}{s\sqrt{\nu}}|x|\r
 \zeta&=-\frac{\theta}{\sigma^2},\\
 s&=\frac{\sigma}{\sqrt{1+(\theta/\sigma)^2\nu/2}}.
 \end{aligned}
-\tag{6}
 $$
 
 We comment that the infinite activity may be observed on noting the division by $|x|$ in the Lévy density and hence we get that the aggregate arrival rate or integral of the Lévy density is infinite. The fact that we have a difference of two gamma processes may also be seen by comparing (6) for positive and negative $x$ values with the gamma Lévy density encountered earlier in equation (4). Note also that $\theta=0$ produces a symmetric Lévy density while negative values for $\theta$ raise the arrival rate of negative jumps relative to positive jumps thereby building a left skew. Finally increasing $\nu$ lowers the rate of exponential decay of the Lévy density symmetrically on both sides and this raises the arrival rates of jumps across all sizes and builds kurtosis. For the symmetric case the unit-time kurtosis is precisely $3(1+\nu)$, whereby $\nu$ calibrates the percentage excess kurtosis.
 
 The VG stock price process is given by
 
+**Equation (7).**
+
 $$
 S(t)=S(0)\exp(\mu t+X(t)+\omega t),
-\tag{7}
 $$
 
 where $\mu$ is the mean rate of return on the stock that for risk neutral processes equals the interest rate, and $\omega$ is the convexity correction defined by
 
+**Equation (8).**
+
 $$
 E[e^{X(t)}]=\Phi_{X(t)}(-i)=e^{-\omega t}.
-\tag{8}
 $$
 
 Specifically we have
 
+**Equation (9).**
+
 $$
 \omega=-\frac1t\log\bigl(\Phi_{X(t)}(-i)\bigr)
 =\frac1\nu\log\left(1-\theta\nu-\frac{\sigma^2\nu}{2}\right).
-\tag{9}
 $$
 
 Option prices and densities may be estimated using the methods described in Carr, Geman, Madan and Yor (2000), Carr and Madan (1999), or the closed forms derived in Madan, Carr and Chang (1998).
@@ -328,16 +337,18 @@ Option prices and densities may be estimated using the methods described in Carr
 
 The two-state VG Markov model is driven by two VG processes $X_i(t;\sigma_i,\nu_i,\theta_i)$ for $i\in\{0,1\}$ and a two-state Markov chain $U(t)$ that takes values in the set $\{0,1\}$. Specifically, the dynamics of the two-state VG process $X(t)$ is given by
 
+**Equation (10).**
+
 $$
 X(t)=\int_0^t\bigl[(1-U(s))\,dX_0(s)+U(s)\,dX_1(s)\bigr].
-\tag{10}
 $$
 
 The price process for the two-state VG Markov model is
 
+**Equation (11).**
+
 $$
 S(t)=S(0)\exp(rt+\omega(t)+X(t)),
-\tag{11}
 $$
 
 where $\omega(t)$ is defined by the condition
@@ -354,9 +365,10 @@ Some of the attractive features of this model are as follows. First, given the o
 
 To construct the characteristic function of the two-state variance gamma Markov model, let $\phi_i(u)$ denote the unit-time characteristic functions for the two embedded variance gamma processes. If in $t$ units of time the time spent by the process $U(t)$ in state 1 is $s$, for $0\le s\le t$, then by the independence of the two variance gamma processes and the resulting multiplicativity of the characteristic functions involved we have
 
+**Equation (12).**
+
 $$
 \phi_{X(t)}(u)=\int_{[0,t]}\phi_0(u)^{t-s}\phi_1(u)^s\,dF_t(s),
-\tag{12}
 $$
 
 where $F_t$ is the distribution of the time spent in state 1, including its endpoint atoms. We may rewrite (12) in terms of the Laplace transform of this occupation-time distribution. In particular,
@@ -368,9 +380,10 @@ $$
 
 Defining the Laplace transform by
 
+**Equation (13).**
+
 $$
 g(\lambda)=\int_{[0,t]}e^{-\lambda s}\,dF_t(s),
-\tag{13}
 $$
 
 we have
@@ -515,9 +528,10 @@ For the time series data we employ a modification of the method of maximum likel
 
 The risk neutral process is fit by matching model prices to market prices using nonlinear least squares. To obtain the option price from the characteristic function we follow Carr and Madan (1999) and invert the Fourier transform in log strike of the time value of the option. Carr and Madan (1999) relate this Fourier transform analytically to the characteristic function of the logarithm of the stock price at maturity. Specifically, evaluating the time value of an option of maturity $T$, with strike $K=e^k$, as $z_T(k)$ equal to the value of a put option for strikes below the current forward price and the value of a call option when $K$ exceeds the forward, its Fourier transform is
 
+**Equation (14).**
+
 $$
 \zeta_T(v)=\int_{-\infty}^{\infty}e^{ivk}z_T(k)\,dk.
-\tag{14}
 $$
 
 One may explicitly relate $\zeta_T(v)$ of equation (14) to the characteristic function of the log of the stock price, $\phi_{\ln S(T)}(u)$, given in Proposition 2. For completeness we present here a slight generalization that accommodates an arbitrary forward price.
@@ -532,14 +546,16 @@ where $F_0$ is the current forward price given by $S(0)e^{(r-\delta)T}$ for a di
 
 From Proposition 3, one may obtain call prices $C_T(K)$ and put prices $P_T(K)$ by Fourier inversion as
 
+**Equation (15).**
+
 $$
 C_T(K)=\frac{1}{2\pi}\int_{-\infty}^{\infty}e^{-ivk}\zeta_T(v)\,dv+e^{-rT}(F_0-K)^+,
-\tag{15}
 $$
+
+**Equation (16).**
 
 $$
 P_T(K)=\frac{1}{2\pi}\int_{-\infty}^{\infty}e^{-ivk}\zeta_T(v)\,dv+e^{-rT}(K-F_0)^+.
-\tag{16}
 $$
 
 The integrations in equations (15) and (16) may be performed using the fast Fourier transform incorporating Simpson's rule.
@@ -1023,3 +1039,7 @@ These notes are additions to the supplied text, not part of the authors’ paper
 - The claim that increasing $\nu$ raises jump arrival rates at every size is retained from the supplied prose; the prefactor $1/\nu$ in equation (6) also changes, so that claim is not implied solely by slower exponential decay.
 - Implementing the formulas requires attention to exponential-moment existence, consistent complex logarithms, limiting cases in the closed forms, and the removable singularity at $v=0$ in Proposition 3. These are outside a Markdown cleanup.
 - Bibliographic volume and page data are retained as supplied and have not been verified against publisher records. External figure availability has not been checked.
+
+### Display Compatibility Update
+
+Equation numbers are placed in ordinary Markdown labels above the display equations instead of LaTeX `\tag{...}` commands. This avoids dependence on the renderer’s equation-number layout. The mathematical expressions are unchanged by this update.
